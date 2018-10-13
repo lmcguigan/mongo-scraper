@@ -56,13 +56,16 @@ app.get("/scrape", function (req, res) {
         var $ = cheerio.load(html);
         $("h2.entry-title").each(function (i, element) {
             var result = {};
+            var summary = $(this).siblings("div.entry-summary").children("p").text();
+            var regex = /Read More/gi;
+            summary.replace(regex, "")
+            console.log(summary);
             result.title = $(this).children("a").text();
             result.link = $(this).children("a").attr("href");
             result.summary = $(this).siblings("div.entry-summary").children("p").text();
             result.saved = false;
             db.Article.create(result)
                 .then(function (dbArticle) {
-                    console.log(dbArticle);
                     res.json({message:"Scrape Complete"});
                 })
                 .catch(function (err) {
