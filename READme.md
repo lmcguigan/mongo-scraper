@@ -1,7 +1,5 @@
 # ArtNews Scraper
 
-View this application live on Heroku [here] (https://secure-river-70647.herokuapp.com/)
-
 ### Overview
 This Node.js application utilizes Express, Handlebars, Request, Cheerio and Mongoose to save articles scraped from the ArtNews website into a Mongo Database. Users can save articles, remove articles, add notes, and delete notes. 
 
